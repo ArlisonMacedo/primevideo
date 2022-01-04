@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f171e;
+    /* height: 3rem; */
+    padding: 0.9rem;
+}
+
+.display-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icon-drop {
+    color: #8197a4;
+    margin-left: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+#explore-drop {
+    margin-left:  1rem;
+    font-size: 0.9rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.logo-img {
+    width: auto;
+    height: 2rem;
+}
+
+.text-menu-color {
+    color: #8197a4;
+}
+
+.display-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-icon {
+    margin-bottom: 0.5rem;
+    margin-right: 0.2rem;
+}
+
+.avatar {
+ margin-right: 0.7rem;
+ margin-left: 1rem;
+}
+
+.avatar-img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+#nickname {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.1rem;
+}
