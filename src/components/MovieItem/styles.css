@@ -6,9 +6,9 @@
     overflow-y: hidden;
 }
 .content {
-    width: 100%;
-    /* height: 10rem; */
-    margin-right: -3.6rem;
+    width: 100vw;
+    height: 10rem;
+    margin-right: -3.6rem;;
     
 }
 .data-content {

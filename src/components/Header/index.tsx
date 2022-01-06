@@ -39,7 +39,7 @@ function Header () {
                         alt=""
                     />
                 </div>
-                    <p className='text-menu-color' id='nickname'>
+                    <p className='text-menu-color-name' id='nickname'>
                         Arlison
                     </p>
                     <div className='icon-drop'>

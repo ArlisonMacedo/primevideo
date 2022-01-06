@@ -80,6 +80,9 @@
 .text-menu-color {
     color: #8197a4;
 }
+.text-menu-color-name {
+    color: #8197a4;
+}
 
 .display-2 {
     display: flex;
@@ -122,17 +125,9 @@
         margin-top: 0.3rem;
         margin-left: 2.1rem;
     }
-    .dropdown-content {
-        display: flex;
-        justify-content: flex-start;
-        position: absolute;
-        background-color: transparent;
-        top: -3rem;
-        left: 11rem;
+
+    .show-dropdown-content {
+        display: inline;
     }
-    .dropdown-content a {
-        background-color: transparent;
-        font-size: 17px;
-        font-weight: 400;
-    }
+    
 }
