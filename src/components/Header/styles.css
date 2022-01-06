@@ -121,13 +121,30 @@
     .icon-drop-menu {display: none;}
     .logo-img {
         width: auto;
-        height: 2.2rem;
+        height: 2.13rem;
         margin-top: 0.3rem;
-        margin-left: 2.1rem;
+        margin-left: 3.21rem;
     }
-
-    .show-dropdown-content {
+    .menu {
         display: inline;
+        margin-left: 1.3rem;
+        margin-top: 0.4rem;
+    }
+    .menu a {
+        color: #f2f4f6e6;
+        text-decoration: none;
+        margin-right: 1rem;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .menu a:hover {
+        color: aliceblue;
     }
     
+}
+
+@media screen and (max-width: 900px) {
+    .menu {
+        display: none;
+    }
 }

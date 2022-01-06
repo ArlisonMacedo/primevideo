@@ -1,30 +1,44 @@
-.container {
+#container-movie-item {
     /* display: inline-block; */
     /* flex-direction: row; */
     /* position: relative; */
+    display: flex;
+    flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-top: 0.5rem;
 }
-.content {
+#container-movie-item .content {
     width: 100vw;
     height: 10rem;
-    margin-right: -3.6rem;;
+    margin-right: -5.5rem;;
     
 }
-.data-content {
+#container-movie-item .content .data-content {
     margin-left: 2rem;
     margin-right: 2rem;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
     width: 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 901px) {
     .thumbnail-content {
         width: 20rem;
     }
     .content {
-        margin-right: -3rem;
+        margin-left: 2.0rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .thumbnail-content {
+        width: 20rem;
+    }
+    #container-movie-item .content {
+        margin-right: -4.5rem;
+        margin-left: 1rem;
     }
 }
