@@ -6,6 +6,9 @@
     background-color: #0f171e;
     /* height: 3rem; */
     padding: 0.9rem;
+    position: fixed;
+    width: 100%;
+    /* z-index: 1000; */
 }
 
 .display-1 {
@@ -13,12 +16,18 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-left: -0.2rem;
 }
 
+.icon-drop-menu {
+    color: #8197a4;
+    margin-left: 0.3rem;
+    margin-bottom: 0.2rem;
+}
 .icon-drop {
     color: #8197a4;
     margin-left: 0.3rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 #explore-drop {
@@ -27,6 +36,40 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #6e6d6de6;
+    overflow: auto;
+    width: 100%;
+    margin-top: 3.5rem;
+    /* width: 100%; */
+    z-index: 999;
+    justify-content: center;
+    /* box-shadow: 400px 5px 5px rgba(0, 0, 0, 0.1); */
+}
+
+.dropdown-content a {
+    background-color: #212a33;
+    color: #f2f4f6e6;
+    text-decoration: none;
+    font-family: 'Spline Sans';
+    font-weight: 600;
+    /* border: 0.8px ridge #f2f4f6e6; */
+    height: 3rem;
+    padding: 1rem;
+    padding-left: 1rem;
+    font-size: 15px;
+
+}
+
+
+.show-dropdown-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .logo-img {
@@ -43,6 +86,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    /* margin-right: 1.7rem; */
 }
 
 .search-icon {
@@ -62,7 +106,33 @@
 }
 
 #nickname {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    font-size: 15px;
+    margin-bottom: 0.3rem;
     margin-right: 0.1rem;
+}
+
+@media screen and (min-width: 901px){
+    .text-menu-color {
+        display: none;
+    }
+    .icon-drop-menu {display: none;}
+    .logo-img {
+        width: auto;
+        height: 2.2rem;
+        margin-top: 0.3rem;
+        margin-left: 2.1rem;
+    }
+    .dropdown-content {
+        display: flex;
+        justify-content: flex-start;
+        position: absolute;
+        background-color: transparent;
+        top: -3rem;
+        left: 11rem;
+    }
+    .dropdown-content a {
+        background-color: transparent;
+        font-size: 17px;
+        font-weight: 400;
+    }
 }
