@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../components/Header'
 import MovieItem from '../../components/MovieItem'
+import RecomendationItem from '../../components/RecomendationItem'
 
 import './styles.css'
 
@@ -18,6 +19,15 @@ function Home () {
                 <p className='text-info'>Amazon Originals e exclusivos</p>
             </div>
             <MovieItem />
+            <div className='info-category'>
+                <img 
+                    className='prime-img-cat'
+                    src="https://m.media-amazon.com/images/G/01/digital/video/global/prime-logo-large-v4.png" 
+                    alt="prime video"
+                />
+                <p className='text-info'>Filmes recomendados</p>
+            </div>
+            <RecomendationItem />
         </div>
     )
 }
