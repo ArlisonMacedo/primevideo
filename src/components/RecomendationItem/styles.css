@@ -1,8 +1,13 @@
 #recomendation-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow-y: hidden;
     overflow-x: auto;
+}
+
+#recomendation-item .row {
+    display: flex;
+    flex-direction: row;
 }
 
 #recomendation-item .content {
