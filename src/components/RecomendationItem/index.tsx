@@ -1,5 +1,5 @@
 import React from 'react'
-import { imgOriginal, imgResize } from '../../util/api'
+import {imgResize } from '../../util/api'
 
 
 import './styles.css'
