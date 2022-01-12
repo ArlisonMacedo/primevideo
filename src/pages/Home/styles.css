@@ -8,6 +8,27 @@
     height: 5rem;
 }
 
+.home-page .movie-item-component {
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.home-page .movie-item-component-recomendation {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+.home-page .movie-item-component-recomendation .more-item-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -0.8rem;
+}
+
 .info-category {
     display: flex;
     flex-direction: row;
@@ -208,13 +229,16 @@
 
 .home-page .more-top-10-container .more-top-10-content .prime-include {
     position: absolute;
-    top: 0.6rem;
+    top: 0;
     left: 6.3rem;
 }
 
 .home-page .more-top-10-container .more-top-10-content .more-top-10-thumbnail  {
-    width: 180.69px;
-    height: 101.5;
+    height: 117.56px;
+    width: 209.27px;
+    object-fit: cover;
+    /* width: 180.69px;
+    height: 101.5; */
     border-radius: 0.2rem;
 }
 

@@ -1,25 +1,61 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import MovieItem from '../../components/MovieItem'
-import RecomendationItem from '../../components/RecomendationItem'
+import MovieItem, {Movie} from '../../components/MovieItem'
+import RecomendationItem, {Similar} from '../../components/RecomendationItem'
 
 
 import {BiPlay, BiPlus} from 'react-icons/bi'
 import {BsInfo} from 'react-icons/bs'
 
 import './styles.css'
-import {apiBaseUrl,apiKey,language} from '../../util/api'
+import {apiBaseUrl, apiKey, imgOriginal, language} from '../../util/api'
 import axios from 'axios'
+
+
+// interface Movies {
+//     backdrop_path: string
+//     id: number
+//     title: string
+//     poster_path: string
+//     overview: string
+// }
 
 function Home () {
 
     const [movies, setMovies] = useState([])
+    const [moreMovies, setMoreMovies] = useState([])
+    const [similars, setSimilars] = useState([])
+    const [similars2, setSimilars2] = useState([])
 
 
     useEffect(() => {
         axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=6`)
             .then(response => {
-                console.log(response)
+                setMovies(response.data.results)
+                
+            })
+    },[])
+
+    useEffect(() => {
+        axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=3`)
+            .then(response => {
+                setMoreMovies(response.data.results)
+            })
+    },[])
+    
+    useEffect(() => {
+        axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=1`)
+            .then(response => {
+                setSimilars(response.data.results)
+                
+            })
+    },[])
+
+    useEffect(() => {
+        axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=2`)
+            .then(response => {
+                setSimilars2(response.data.results)
+                
             })
     },[])
 
@@ -36,7 +72,20 @@ function Home () {
                 />
                 <p className='text-info'>Amazon Originals e exclusivos</p>
             </div>
-            <MovieItem />
+
+            <div className='movie-item-component'>
+            {
+                movies.map((movie: Movie) => {
+                    return (
+                        <MovieItem 
+                            key={movie.id}
+                            movie={movie}
+                        />
+                    )
+                })
+            }
+            </div>
+
             <div className='info-category'>
                 <img 
                     className='prime-img-cat'
@@ -45,7 +94,35 @@ function Home () {
                 />
                 <p className='text-info'>Filmes recomendados</p>
             </div>
-            <RecomendationItem />
+            <div className='movie-item-component-recomendation'>
+                <div className='more-item-row'>
+                {similars.map((similar: Similar) => {
+                        return (
+                            <RecomendationItem
+                                key={similar.id}
+                                similar={similar}
+                            />
+                         )
+                    })
+                    
+                } 
+                </div>
+
+                <div className='more-item-row'>
+                    {similars2.map((similar: Similar) => {
+                            return (
+                                <RecomendationItem
+                                    key={similar.id}
+                                    similar={similar}
+                                />
+                            )
+                        })
+                        
+                    } 
+                </div>
+            </div>
+                
+                
             <div className='info-category'>
                 <p className='text-info'>Prime video channels</p>
             </div>
@@ -119,13 +196,13 @@ function Home () {
             <p className='text-info'>Top 10 no Brasil</p>
             </div>
                 <div className='top-10-brasil-text-container'>
-                    <p className='top-10-brasil-text-content'>A Roda do Tempo - Temporada 1</p>
+                    <p className='top-10-brasil-text-content'>O Desejo de Natal de Mickey e Minnie</p>
                     <p className='text-genre'>Drama, Fantasia, Aventura</p>
                     <span className='age-range'>16</span>
                 </div>
                 <img  
                     className='top-10-brasil-backdrop-path'
-                    src="https://seriemaniacos.tv/wp-content/uploads/2021/10/capa-a-roda-do-tempo.jpg" 
+                    src={imgOriginal+'/8fW0wqB3a6dvIoIBduCKocZi58a.jpg'} 
                     alt=""
                 />
                 <div className='footer-container'>
@@ -156,7 +233,7 @@ function Home () {
                         />
                         <img 
                             className='more-top-10-thumbnail'
-                            src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/ee4dd5367b4d2b5675fde1bfaf4f2dbe024892f51f91dce20cd89e264b83c680._RI_V_TTW_SX356_FMwebp_.jpg" 
+                            src={imgOriginal+'/mmfcnU42ghEdxySVi2HLynvXZxl.jpg'} 
                             alt="" 
                         />
                     </div>
@@ -174,9 +251,19 @@ function Home () {
                 />
                 <p className='text-info'>Amazon Mais Filmes</p>
             </div>
-                <MovieItem />
+            <div className='movie-item-component'>
+                {
+                    moreMovies.map((movie: Movie) => {
+                        return (
+                            <MovieItem 
+                                key={movie.id}
+                                movie={movie}
+                            />
+                        )
+                    })
+                }
             </div>
-
+            </div>
 
         </div>
     )
