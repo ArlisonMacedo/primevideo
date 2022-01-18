@@ -8,6 +8,32 @@
     height: 5rem;
 }
 
+.home-page .movie-item-component .left-button-container {
+    position: absolute;
+    left: 0;
+}
+
+.home-page .movie-item-component .left-button-container #left-button-action {
+    height: 170.55px;
+    width: 50px;
+    cursor: pointer;
+    background: #0f171e80;
+    border: 0;
+}
+
+.home-page .movie-item-component .right-button-container {
+    position: absolute;
+    right: 0;
+}
+
+.home-page .movie-item-component .right-button-container #right-button-action {
+    height: 170.55px;
+    width: 50px;
+    cursor: pointer;
+    background: #0f171e80;
+    border: 0;
+}
+
 .home-page .movie-item-component {
     display: flex;
     flex-direction: row;
@@ -93,11 +119,13 @@
 
 .home-page .top-10-brasil-text-content {
     position: absolute;
-    top: 10rem;
-    font-size: 20px;
+    top: 7rem;
+    font-size: 29px;
     font-weight: 700;
+    max-width: 450px;
     z-index: 3;
     left: 6rem;
+    
     
 }
 
@@ -115,7 +143,7 @@
     top: 3.9rem;
     left: -1.7rem;
     z-index: 2;
-    font-size: 20px;
+    font-size: 28px;
     z-index: 3;
 }
 
@@ -266,25 +294,27 @@
     }
 
     .home-page .top-10-brasil .top-10-brasil-text-container {
-        background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+        background-image: linear-gradient(to right,rgba(0,0,0,1), #0f171e, transparent, transparent);
     }
     
     
     .home-page .top-10-brasil .top-10-brasil-backdrop-path {
-        width: 100%;
+        width: auto;
         height: 100%;
         /* margin: -6rem; */
+        object-fit: contain;
+        object-position: right;
         position: absolute;
         right: 0;
     }
 
     .home-page .footer-container {
-        background-image: linear-gradient(to top, #0f171e, transparent);
+        background-image: linear-gradient(to top, #0f171e,transparent);
     }
     .home-page .top-10-brasil-text-content {
         position: absolute;
         /* left: 2rem; */
-        top: 16rem;
+        top: 14rem;
     }
     .home-page .text-genre {
         position: absolute;
@@ -308,8 +338,8 @@
         position: relative;
         top: 8rem;
         padding-right: 77%;
-        background-image: linear-gradient(to bottom, #0f171e, #0f171e, transparent);
-        background-image: linear-gradient(to top, #0f171e, transparent);
+        /* background-image: linear-gradient(to bottom, #0f171e, #0f171e, transparent); */
+        /* background-image: linear-gradient(to top, #0f171e, transparent); */
     }
     .home-page .more-top-10-container .more-top-10-content .prime-include-mobile {
         display: none;
@@ -346,6 +376,8 @@
     .home-page .top-10-brasil-text-content {
         position: absolute;
         left: 2rem;
+        font-size: 20px;
+        margin-top: 2rem;
     }
         
     .home-page .text-genre {

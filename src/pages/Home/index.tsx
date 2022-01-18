@@ -5,20 +5,13 @@ import RecomendationItem, {Similar} from '../../components/RecomendationItem'
 
 
 import {BiPlay, BiPlus} from 'react-icons/bi'
-import {BsInfo} from 'react-icons/bs'
+import {BsInfo, BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
 import './styles.css'
 import {apiBaseUrl, apiKey, imgOriginal, language} from '../../util/api'
 import axios from 'axios'
 
 
-// interface Movies {
-//     backdrop_path: string
-//     id: number
-//     title: string
-//     poster_path: string
-//     overview: string
-// }
 
 function Home () {
 
@@ -74,6 +67,16 @@ function Home () {
             </div>
 
             <div className='movie-item-component'>
+                <div className='left-button-container'>
+                    <button id='left-button-action'>
+                        <BsChevronLeft  size={40} color='#f2f2f2' />
+                    </button>
+                </div>
+                <div className='right-button-container'>
+                    <button id='right-button-action'>
+                        <BsChevronRight  size={40} color='#f2f2f2' />
+                    </button>
+                </div>
             {
                 movies.map((movie: Movie) => {
                     return (
