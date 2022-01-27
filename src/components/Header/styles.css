@@ -41,7 +41,7 @@
 
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed;
     background-color: #6e6d6de6;
     overflow: auto;
     width: 100%;

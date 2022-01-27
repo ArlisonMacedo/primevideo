@@ -245,6 +245,7 @@
     justify-content: start;
     align-items: center;
     margin-right: 2rem;
+    cursor: pointer;
 }
 
 .home-page .more-top-10-container .more-top-10-content .more-top-10-text {
@@ -314,7 +315,7 @@
     .home-page .top-10-brasil-text-content {
         position: absolute;
         /* left: 2rem; */
-        top: 14rem;
+        top: 13.5rem;
     }
     .home-page .text-genre {
         position: absolute;
@@ -340,6 +341,13 @@
         padding-right: 77%;
         /* background-image: linear-gradient(to bottom, #0f171e, #0f171e, transparent); */
         /* background-image: linear-gradient(to top, #0f171e, transparent); */
+    }
+    .home-page .more-top-10-container .more-top-10-content .prime-include {
+        position: relative; 
+        left: 3.2rem;
+        top: -3rem;
+
+        
     }
     .home-page .more-top-10-container .more-top-10-content .prime-include-mobile {
         display: none;
@@ -403,4 +411,10 @@
     }
 
 
+}
+
+@media screen and (max-width: 578px){
+    .home-page .top-10-brasil .top-10-brasil-text-container {
+        background-image: linear-gradient(to right,rgba(0,0,0,1), transparent);
+    }
 }

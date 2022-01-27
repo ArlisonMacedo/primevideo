@@ -18,6 +18,9 @@ interface MovieItemProps {
 
 
 const MovieItem: React.FC<MovieItemProps> = ({movie}) => {
+
+
+
     return (
         <div id='container-movie-item'>
             <div className='content'>
