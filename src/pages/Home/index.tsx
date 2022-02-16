@@ -1,20 +1,18 @@
-import React, { useEffect, useState, MouseEvent } from 'react'
-import Header from '../../components/Header'
-import MovieItem, {Movie} from '../../components/MovieItem'
-import RecomendationItem, {Similar} from '../../components/RecomendationItem'
-
-
-import {BiPlay, BiPlus} from 'react-icons/bi'
-import {BsInfo, BsChevronLeft, BsChevronRight} from 'react-icons/bs'
-
-import './styles.css'
-import {apiBaseUrl, apiKey, imgOriginal, language} from '../../util/api'
 import axios from 'axios'
-
+import React, { useEffect, useState} from 'react'
+import { BiPlay, BiPlus } from 'react-icons/bi'
+import { BsChevronLeft, BsChevronRight, BsInfo } from 'react-icons/bs'
+import Header from '../../components/Header'
+import MovieItem, { Movie } from '../../components/MovieItem'
+import RecomendationItem, { Similar } from '../../components/RecomendationItem'
+import { apiBaseUrl, apiKey, imgOriginal, language } from '../../util/api'
+import './styles.css'
 
 interface Tops {
     id: number;
     poster_path: string;
+    backdrop_path: string;
+    title: string
 }
 
 interface SelectedMovie {
@@ -22,6 +20,7 @@ interface SelectedMovie {
     poster_path: string;
     backdrop_path: string;
     title: string
+    
 }
 
 
@@ -36,28 +35,13 @@ function Home () {
         id: 0,
         poster_path: '',
         title: '',
-        backdrop_path: ''
+        backdrop_path: '',
+        
     })
+    const [idSelected, setIdSelected] = useState(Number)
     const [isSelected,setIsSelected] = useState<Boolean>(false)
-    const [numbers, setNumbers] = useState(
-        [
+    const [numbers, setNumbers] = useState(0)
 
-        {id: 1 },
-        {id: 2 },
-        {id: 3 },
-        {id: 4 },
-        {id: 5 },
-        {id: 6 },
-        {id: 7 },
-        {id: 8 },
-        {id: 9 },
-        {id: 10 }
-        ]
-    )
-
-
-
-    
     useEffect(() => {
         axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=6`)
             .then(response => {
@@ -92,23 +76,37 @@ function Home () {
         axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=9`)
             .then(response => {
                 setTops(response.data.results)
+                const obj = {...tops[0]}
+                setIdSelected(obj.id)
+                
+            }) 
+            
+    },[idSelected !== 0])
+
+    useEffect(() => {
+        axios.get(`${apiBaseUrl}movie/${idSelected}?${apiKey}&${language}`)
+            .then(response => {
+                setSelected(response.data)
             })
-    },[])
+    },[idSelected])
+    
 
 
     function selectedMovie (id: number) {
+        
         
         axios.get(`${apiBaseUrl}movie/${id}?${apiKey}&${language}`)
             .then(response => {
                 setSelected(response.data)
                 setIsSelected(!isSelected)
                 
-            })
-
-            
+            })  
     }
     
-
+    function handleRight () {
+        
+        
+    }
 
     return (
         <div className='home-page'>
@@ -125,12 +123,12 @@ function Home () {
 
             <div className='movie-item-component'>
                 <div className='left-button-container'>
-                    <button id='left-button-action' >
+                    <button id='left-button-action'>
                         <BsChevronLeft  size={40} color='#f2f2f2' />
                     </button>
                 </div>
                 <div className='right-button-container'>
-                    <button id='right-button-action'>
+                    <button id='right-button-action' onClick={ handleRight }>
                         <BsChevronRight  size={40} color='#f2f2f2' />
                     </button>
                 </div>
@@ -255,17 +253,22 @@ function Home () {
                 /> {"\n"}
             <p className='text-info'>Top 10 no Brasil</p>
             </div>
-                    <div className='top-10-brasil-text-container'>
-                        <p className='top-10-brasil-text-content'>{selected.title}</p>
-                        <p className='text-genre'>Drama, Fantasia, Aventura</p>
-                        <span className='age-range'>16</span>
-                    </div>
+                    {!isSelected &&(
+                        <>
+                        <div className='top-10-brasil-text-container'>
+                            <p className='top-10-brasil-text-content'>{selected.title}</p>
+                            <p className='text-genre'>Drama, Fantasia, Aventura</p>
+                            <span className='age-range'>16</span>
+                        </div>
 
-                    <img  
-                        className='top-10-brasil-backdrop-path'
-                        src={imgOriginal+selected.backdrop_path} 
-                        alt=""
-                    />
+                        <img  
+                            className='top-10-brasil-backdrop-path'
+                            src={imgOriginal+selected.backdrop_path} 
+                            alt=""
+                        />
+                        </>
+                    )}
+                    
                 {isSelected && (
                     <>
                     <div className='top-10-brasil-text-container'>
@@ -282,6 +285,7 @@ function Home () {
                 </>
                 
                 )}
+                
                 
                 <div className='footer-container'>
                     <div className='footer-content'>
@@ -302,17 +306,21 @@ function Home () {
                             
                            tops?.map(top => {
                                
+                               
+                               
                                return (
                                    
                                    <div className='more-top-10-content' key={top.id}
                                     onClick={() => {selectedMovie(top.id)}}
+                                    
                                    >
-                                   
+
                                         <h1 className='more-top-10-text'>
                                             1
                                         </h1>
-                                        
-                                        
+                                       
+                                               
+                                   
                                         <img  className='prime-include'
                                         src="https://m.media-amazon.com/images/G/01/digital/video/web/cues/v3/prime.svg" 
                                         alt="prime video" 
@@ -329,7 +337,7 @@ function Home () {
                                 </div>
                             
                                )
-                               
+                              
                            }) 
                            
                         }
