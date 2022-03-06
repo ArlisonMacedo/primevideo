@@ -7,11 +7,16 @@
 }
 
 #detail-home-page #content-detail img {
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 60%;
 }
 
+#detail-home-page #content-detail #bottom-gradient {
+  z-index: -998;
+  margin-top: -1rem;
+  background: linear-gradient(to top, #0f171e 0%, #0f171e 29%, #0f171e 70%, transparent 100%);
+}
 
 #detail-home-page #content-detail .title-movie {
   margin-left: 2rem;
@@ -43,16 +48,22 @@
   border-radius: 0.2rem;
   color: #0f171e;
   height: 1rem;
+  font-weight: bold;
 }
 
+#detail-home-page #content-detail #include-prime {
+  display: flex;
+  flex-direction: row;
+}
 
 #detail-home-page #content-detail .prime-img-cat {
   width: 3rem;
-  margin-left: 5rem;
-  margin-top: 1rem;
+  margin-left: 3rem;
+  /* margin-top: 1rem; */
 }
 #detail-home-page #content-detail .prime-include-text {
-  margin-left: 5.2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
   color: rgb(182, 182, 182);
   font-family: 'Spline Sans';
   font-size: 12px;
@@ -60,7 +71,7 @@
 }
 
 #detail-home-page #content-detail #button-play {
-  background-color: #0f79af;
+  background-color: #ffa724;
   border: none;
   display: flex;
   justify-content: flex-start;
@@ -71,9 +82,10 @@
   margin-right: 1rem;
   margin-top: 0.6rem;
   height: 3.5rem;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   font-size: 15px;
+  cursor: pointer;
 }
 
 #detail-home-page #content-detail #actions-buttons{
@@ -84,13 +96,15 @@
 }
 
 #detail-home-page #content-detail #actions-buttons .button-act{
-  border-color: #0f79af;
+  border: none;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 3.3rem;
+  height: 3.3rem;
   color: #fff;
-  background-color: #0f171e;
+  background-color: #425265;
+  padding-top: 0.4rem;
   align-self: center;
+  cursor: pointer;
 
 }
 #detail-home-page #content-detail #actions-buttons .button-act .text-button {
@@ -98,15 +112,124 @@
  justify-content: center;
  align-items: center;
  margin-top: 0.5rem;
+ font-family: 'Poppins';
+ font-weight: 400;
 }
 
 #detail-home-page #content-detail #overview {
   margin-top: 2rem;
   /* margin-left: 2rem; */
   max-width: 70rem;
+  max-height: 10rem;
   padding-left: 0.8rem;
   font-family: 'Poppins';
   color: #cfcfcf;
-  max-height: 1rem;
 }
 
+#detail-home-page #footer {
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-top: 6rem;
+}
+#detail-home-page #footer #relation h3{
+  font-family: 'Poppins';
+  color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#detail-home-page #footer #content {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+
+@media screen and (min-width: 901px) {
+  #detail-home-page #content-detail {
+    display: flex;
+    /* background-image: linear-gradient(to right,#0f171e, #111b24, transparent); */
+    /* background-image: linear-gradient(to top,#0f171e, transparent); */
+    /* background: rgb(2,0,36); */
+    background: linear-gradient(90deg, #0f171e 0%, #0f171e 29%, #0f171e 34%, transparent 70%);
+  }
+ 
+  #detail-home-page #content-detail .title-movie {
+    position: absolute;
+    bottom: 25rem;
+    font-size: 45px;
+    
+  }
+  #detail-home-page #content-detail #include-prime {
+    
+    position: absolute;
+    bottom: 14rem;
+    left: 0rem;
+    z-index: 19;
+  }
+  #detail-home-page #content-detail .genres {
+    position: absolute;
+    bottom: 23.3rem;
+    left: 1rem;
+  }
+  #detail-home-page #content-detail img {
+    object-fit: contain;
+    width: 80%;
+    height: 60%;
+    position: relative;
+    left: 20%;
+    z-index: -9999;
+    
+    /* border-bottom-left-radius: 60rem; */
+  }
+  #detail-home-page #content-detail #overview {
+    position: absolute;
+    bottom: 22rem;
+    max-width: 50rem;
+    color: #fff;
+    max-height: 3%;
+  }
+
+  #detail-home-page #content-detail .prime-img-cat {
+    margin-left: 0rem;
+    margin-top: 0.1rem;
+  }
+  #detail-home-page #content-detail .prime-include-text {
+    /* position: absolute; */
+    /* bottom: 15rem; */
+    margin-left: 3.5rem;
+    font-family: 'Poppins', sans-serif;
+    
+  }
+  #detail-home-page #content-detail #button-play {
+    background-color: #ffa724;
+    color: #000;
+    width: 187.97px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 8rem;
+    padding-left: 2.4rem;
+  }
+
+  #detail-home-page #content-detail #actions-buttons {
+    position: absolute;
+    bottom: 8.5rem;
+    left: 15rem;
+  }
+  #detail-home-page #content-detail #actions-buttons .button-act {
+    margin-right: 3rem;
+    background-color: #425265;
+    border: none;
+    padding-top: 0.3rem;
+  }
+  #detail-home-page #footer {
+    margin-top: 4rem;
+    
+  }
+}

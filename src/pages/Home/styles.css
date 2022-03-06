@@ -157,13 +157,21 @@
     /* margin-top: 1rem; */
 }
 
-.home-page .text-genre {
-    position: absolute;
+.home-page .top-10-brasil .top-10-brasil-text-container .genres {
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.home-page .top-10-brasil .top-10-brasil-text-container .text-genre {
+    position: relative;
     top: 12rem;
-    left: 5.8rem;
+    left: 2.8rem;
     font-size: 18px;
     font-weight: 400;
     z-index: 3;
+    font-family: 'Poppins';
+    margin-left: 0.4rem;
 }
 
 .home-page .age-range {
@@ -317,9 +325,9 @@
         /* left: 2rem; */
         top: 13.5rem;
     }
-    .home-page .text-genre {
-        position: absolute;
-        /* left: 2rem; */
+    .home-page .top-10-brasil .top-10-brasil-text-container .text-genre {
+        position: relative;
+        left: 5rem;
         top: 18rem;
     }
 

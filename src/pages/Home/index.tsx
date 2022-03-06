@@ -7,8 +7,9 @@ import MovieItem, { Movie } from '../../components/MovieItem'
 import RecomendationItem, { Similar } from '../../components/RecomendationItem'
 import { apiBaseUrl, apiKey, imgOriginal, language } from '../../util/api'
 
-import img_load from '../../assets/logo-az-anime.png'
+
 import './styles.css'
+import { useNavigate } from 'react-router-dom'
 
 interface Tops {
     id: number;
@@ -22,12 +23,19 @@ interface SelectedMovie {
     poster_path: string;
     backdrop_path: string;
     title: string
+    genres: [
+        {
+            id: number
+            name: string
+        }
+    ]
     
 }
 
 
 function Home () {
 
+    const navigate = useNavigate()
     const [movies, setMovies] = useState([])
     const [moreMovies, setMoreMovies] = useState([])
     const [similars, setSimilars] = useState([])
@@ -38,7 +46,9 @@ function Home () {
         poster_path: '',
         title: '',
         backdrop_path: '',
-        
+        genres: [
+            {id: 0, name: ''}
+        ]
     })
     const [idSelected, setIdSelected] = useState(Number)
     const [isSelected,setIsSelected] = useState<Boolean>(false)
@@ -106,7 +116,10 @@ function Home () {
             })  
     }
 
-     
+
+    function handleGoDetail (id: number) {
+        navigate(`/movie/${id}`)
+    }
 
     return (
         <div className='home-page'>
@@ -258,8 +271,17 @@ function Home () {
                         <>
                         <div className='top-10-brasil-text-container'>
                             <p className='top-10-brasil-text-content'>{selected.title}</p>
-                            <p className='text-genre'>Drama, Fantasia, Aventura</p>
-                            <span className='age-range'>16</span>
+                            <div className='genres'>
+                        {
+                            selected.genres.map(sele => {
+                                return (
+                                    
+                                        <p className='text-genre'>{sele.name}</p>
+                                        )
+                                    })
+                                }
+                                </div>
+                            
                         </div>
 
                         <img  
@@ -274,8 +296,18 @@ function Home () {
                     <>
                     <div className='top-10-brasil-text-container'>
                         <p className='top-10-brasil-text-content'>{selected.title}</p>
-                        <p className='text-genre'>Drama, Fantasia, Aventura</p>
-                        <span className='age-range'>16</span>
+
+                        <div className='genres'>
+                        {
+                            selected.genres.map(sele => {
+                                return (
+                                    
+                                        <p className='text-genre'>{sele.name}</p>
+                                        )
+                                    })
+                                }
+                                </div>
+                        
                     </div>
 
                     <img  
@@ -297,7 +329,7 @@ function Home () {
                         <button className='button-plus'>
                             <BiPlus size={30} />
                         </button>
-                        <button className='button-info'>
+                        <button className='button-info' onClick={ () => handleGoDetail(selected.id)}>
                             <BsInfo size={30} />
                         </button>
                     </div>

@@ -6,10 +6,12 @@ interface IRangeAge {
 }
 
 const RangeAge: React.FC<IRangeAge> = ({age}) => {
+  
   const [avaliable, setAvalieble] = useState(0)
   useEffect(() => {
     setAvalieble(age)
   },[age])
+
   return (
     <div id="range-age-component">
       {
