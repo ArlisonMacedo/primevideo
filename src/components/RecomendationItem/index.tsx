@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {imgResize } from '../../util/api'
 
 
@@ -18,9 +19,16 @@ interface SimiliarItemProps {
 }
 
 const RecomendationItem: React.FC<SimiliarItemProps> = ({similar}) => {
+
+    const navigate = useNavigate()
+
+    function handleGoDetail (id: number) {
+        navigate(`/movie/${id}`)
+    }
+
     return (
         <>
-        <div id='recomendation-item'>
+        <div id='recomendation-item' onClick={() => handleGoDetail(similar.id)}>
             <div className='row'>
             <div className='content'>
                 <div className='data-content' key={similar.id}>
