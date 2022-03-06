@@ -1,4 +1,5 @@
 import React from 'react'
+import {useNavigate, useParams} from 'react-router-dom'
 
 import {imgResize} from '../../util/api'
 
@@ -18,11 +19,16 @@ interface MovieItemProps {
 
 
 const MovieItem: React.FC<MovieItemProps> = ({movie}) => {
+    
+    const navigate = useNavigate()
 
+    function handleGoDetail (id: number) {
+        navigate(`/movie/${id}`)
+    }
 
 
     return (
-        <div id='container-movie-item'>
+        <div id='container-movie-item' onClick={() => handleGoDetail(movie.id)}>
             <div className='content'>
                 <div className='data-content'>
                     <img 

@@ -1,0 +1,11 @@
+#range-age-component {
+  margin-left: 0.5rem;
+  
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#range-age-component p {
+  color: #f4f4f4;
+}

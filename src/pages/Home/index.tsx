@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState, useRef} from 'react'
 import { BiPlay, BiPlus } from 'react-icons/bi'
 import { BsChevronLeft, BsChevronRight, BsInfo } from 'react-icons/bs'
 import Header from '../../components/Header'
 import MovieItem, { Movie } from '../../components/MovieItem'
 import RecomendationItem, { Similar } from '../../components/RecomendationItem'
 import { apiBaseUrl, apiKey, imgOriginal, language } from '../../util/api'
+
+import img_load from '../../assets/logo-az-anime.png'
 import './styles.css'
 
 interface Tops {
@@ -40,7 +42,8 @@ function Home () {
     })
     const [idSelected, setIdSelected] = useState(Number)
     const [isSelected,setIsSelected] = useState<Boolean>(false)
-    const [numbers, setNumbers] = useState(0)
+    
+    const ref = useRef()
 
     useEffect(() => {
         axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=6`)
@@ -73,7 +76,7 @@ function Home () {
     },[])
 
     useEffect(() => {
-        axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=9`)
+        axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=8`)
             .then(response => {
                 setTops(response.data.results)
                 const obj = {...tops[0]}
@@ -102,14 +105,12 @@ function Home () {
                 
             })  
     }
-    
-    function handleRight () {
-        
-        
-    }
+
+     
 
     return (
         <div className='home-page'>
+            
             <Header />
             <div className='content'></div>
             <div className='info-category'>
@@ -121,14 +122,14 @@ function Home () {
                 <p className='text-info'>Amazon Originals e exclusivos</p>
             </div>
 
-            <div className='movie-item-component'>
+            <div className='movie-item-component' id='movie-item-component'>
                 <div className='left-button-container'>
                     <button id='left-button-action'>
                         <BsChevronLeft  size={40} color='#f2f2f2' />
                     </button>
                 </div>
                 <div className='right-button-container'>
-                    <button id='right-button-action' onClick={ handleRight }>
+                    <button id='right-button-action'>
                         <BsChevronRight  size={40} color='#f2f2f2' />
                     </button>
                 </div>
@@ -372,5 +373,6 @@ function Home () {
         </div>
     )
 }
+
 
 export default Home
