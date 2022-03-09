@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { BiDownload, BiPlay, BiPlus, BiShareAlt } from 'react-icons/bi'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, NavigateProps } from 'react-router-dom'
 import Header from '../../components/Header'
 import RangeAge from '../../components/RangeAge'
 import { apiBaseUrl, apiKey, language, imgOriginal } from '../../util/api'
@@ -32,7 +32,7 @@ interface ISimilar {
 
 function Detail () {
   const params = useParams()
-  const navigate = useNavigate()
+  
 
   const [movie, setMovie] = useState<IMovie>({
     id: 0,
@@ -42,7 +42,7 @@ function Detail () {
     genres: [{id: 0, name: ''}]
   })
   const [random, setRandom] = useState(0)
-  const [similars, setSimilars] = useState<ISimilar[]>([])
+  
 
   useEffect(() => {
     axios.get(`${apiBaseUrl}/movie/${params.id}?${apiKey}&${language}`)
@@ -52,18 +52,9 @@ function Detail () {
       setRandom(1 + Math.random() * (22 - 1))
   },[])
 
-  useEffect(() => {
-    axios.get(`${apiBaseUrl}movie/${params.id}/recommendations?${apiKey}&${language}&page=2`)
-          .then(response => {
-          setSimilars(response.data.results)
-    })
-    
-  },[])
+  
 
-  function handleGoDetail (id: number) {
-    navigate(`/movie/${id}`)
-  }
-
+ 
   return (
     <div id="detail-home-page">
       <Header />
@@ -74,7 +65,7 @@ function Detail () {
         <p className='title-movie'>{movie.title}</p>
 
        <div id='bottom-gradient'>
-         <h1 style={{color: 'transparent'}}>test</h1>
+         <h1 style={{color: 'transparent'}}>.</h1>
        </div>
 
         <div className="genres">
@@ -121,7 +112,7 @@ function Detail () {
         </div>
         
       </div>
-      <div id='footer'>
+      {/* <div id='footer'>
           <div id='relation'>
             <h3>Relacionados</h3>
           </div>
@@ -141,7 +132,7 @@ function Detail () {
               })
             }
           </div>
-      </div>
+      </div> */}
     </div>
   )
 }

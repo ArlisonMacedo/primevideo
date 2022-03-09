@@ -10,6 +10,7 @@ import { apiBaseUrl, apiKey, imgOriginal, language } from '../../util/api'
 
 import './styles.css'
 import { useNavigate } from 'react-router-dom'
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu'
 
 interface Tops {
     id: number;
@@ -52,8 +53,6 @@ function Home () {
     })
     const [idSelected, setIdSelected] = useState(Number)
     const [isSelected,setIsSelected] = useState<Boolean>(false)
-    
-    const ref = useRef()
 
     useEffect(() => {
         axios.get(`${apiBaseUrl}movie/popular?${apiKey}&${language}&page=6`)
@@ -121,6 +120,18 @@ function Home () {
         navigate(`/movie/${id}`)
     }
 
+    const Arrow = ({text, className}: any) => {
+        return (
+            <div className={className}>
+                {text}
+            </div>
+        )
+    }
+
+    const ArrowLeft = Arrow({text: '<', className: 'arrow-prev'})
+    const ArrowRight = Arrow({text: '>', className: 'arrow-next'})
+    
+    
     return (
         <div className='home-page'>
             
@@ -136,7 +147,7 @@ function Home () {
             </div>
 
             <div className='movie-item-component' id='movie-item-component'>
-                <div className='left-button-container'>
+                {/* <div className='left-button-container'>
                     <button id='left-button-action'>
                         <BsChevronLeft  size={40} color='#f2f2f2' />
                     </button>
@@ -145,17 +156,25 @@ function Home () {
                     <button id='right-button-action'>
                         <BsChevronRight  size={40} color='#f2f2f2' />
                     </button>
-                </div>
-            {
-                movies.map((movie: Movie) => {
-                    return (
-                        <MovieItem 
-                            key={movie.id}
-                            movie={movie}
-                        />
-                    )
-                })
-            }
+                </div>  */}
+
+                
+                    {
+                        movies.map((movie: Movie) => {
+                            return (
+                                <MovieItem 
+                                key={movie.id}
+                                movie={movie}
+                                />
+                            )
+                        })
+                    }
+                
+                
+                
+
+            
+                
             </div>
 
             <div className='info-category'>

@@ -196,12 +196,18 @@
   #detail-home-page #content-detail .prime-img-cat {
     margin-left: 0rem;
     margin-top: 0.1rem;
+    width: 95px;
+    height: 35px;
+
   }
   #detail-home-page #content-detail .prime-include-text {
     /* position: absolute; */
     /* bottom: 15rem; */
-    margin-left: 3.5rem;
+    margin-left: 4.5rem;
+    margin-top: .6rem;
     font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #fff;
     
   }
   #detail-home-page #content-detail #button-play {
